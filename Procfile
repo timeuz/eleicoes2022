@@ -1,1 +1,1 @@
-release: python3 -m flask --app main
+web: python3 -m flask --app main
