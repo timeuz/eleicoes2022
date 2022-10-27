@@ -1,1 +1,1 @@
-web: python3 -m flask --app main run
+web: python3 main.py
