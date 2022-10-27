@@ -4,37 +4,108 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
-    <meta http-equiv="refresh" content="3">
-    <title>Votos</title>
+    <meta http-equiv="refresh" content="10">
+    <title>Eleições Presidenciais 2022 - Segundo Turno</title>
 </head>
 <body>
-    <div id="votos" class="container text-center">
-        <div class="row text-center">
-            <img src="{{url_for('static', filename='logo.jpeg')}}" style="width: 20%;" class="img-fluid mx-auto" alt="Eleições 2022" />
+    <div class="container-fluid">
+        <div id="votos" class="container text-center">
+            <div class="row text-center">
+                <img src="{{url_for('static', filename='logo.jpeg')}}" style="min-width: 100px;" class="img-fluid mx-auto" alt="Eleições 2022" />
+            </div>
+            <div class="row gap-3">
+                &nbsp;
+            </div>
+            <div class="row">
+                <div class="col">
+                    <table class="table">
+                        <thead>
+                            <tr class="table-dark fs-5">
+                                <th>CANDIDATO</th>
+                                <th>VOTOS</th>
+                                <th>PORCENTAGEM</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-light">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            {%for i in range(0, len_cand)%}
+                                <tr class="table-light">
+                                    <td class="fs-5">{{candidato[i]}}</td>
+                                    <td class="fs-5">{{votos[i]}}</td>
+                                    <td class="fs-5">{{porcentagem[i]}}</td>
+                                </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col">
+                    <table class="table">
+                        <thead>
+                            <tr class="table-dark fs-5">
+                                <th colspan="3">MAIS INFORMAÇÕES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="table-light">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr class="table-light">
+                                <td>Votos Brancos</td>
+                                <td>{{vbrancos}}</td>
+                                <td>{{pvbrancos}}</td>
+                            </tr>
+                            <tr class="table-light">
+                                <td>Votos Nulos</td>
+                                <td>{{vnulos}}</td>
+                                <td>{{pvnulos}}</td>
+                            </tr>
+                            <tr class="table-light">
+                                <td>Comparecimentos</td>
+                                <td>{{comp}}</td>
+                                <td>{{pcomp}}</td>
+                            </tr>
+                            <tr class="table-light">
+                                <td>Abstenções</td>
+                                <td>{{abst}}</td>
+                                <td>{{pabst}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="row" style="background-color: #000; color: #fff;">
+                        <div class="col p-2 fs-4">
+                            <strong>APURAÇÃO POR ESTADO</strong>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% for chave, valor in votosest.items() -%}
+                        <div class="col" style="background-color: #fd9843">
+                            <span class="fs-4"><strong>{{chave.upper()}}</strong></span>
+                        </div>
+                        <div class="col text-start" style="background-color: #dee2e6">
+                            <span><strong>Lula</strong> - {{valor['13']}}%</span><br>
+                            <span><strong>Bolsonaro</strong> - {{valor['22']}}%</span>
+                        </div>
+                            {% if loop.index % 3 == 0 -%}
+                    </div>
+                    <div class="row">
+                            {% endif -%}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        <div class="row mt-3" style="background-color: #000;">
+            by <a href="https://github.com/timeuz/eleicoes2022/">timEU</a>
         </div>
-        <table class="table">
-            <thead>
-                <tr class="table-dark">
-                    <th>CANDIDATO</th>
-                    <th>VOTOS</th>
-                    <th>PORCENTAGEM</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="table-light">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                {%for i in range(0, len_cand)%}
-                    <tr class="table-light">
-                        <td>{{candidato[i]}}</td>
-                        <td>{{votos[i]}}</td>
-                        <td>{{porcentagem[i]}}</td>
-                    </tr>
-                {%endfor%}
-            </tbody>
-        </table>
     </div>
 </body>
 </html>
