@@ -1,0 +1,9 @@
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy Stage
+      uses: fjogeleit/http-request-action@v1
+      with:
+        url: 'https://api.qoddi.com/push/?key=59hwupxq3n1alkd7mj4tyibc8vsroz6f2ge'
+        method: 'POST'
