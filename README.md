@@ -5,3 +5,4 @@ Aplicação em Python e Flask que confere em tempo real a apuração dos votos d
  - Gerar gráficos
  - Armazenar dados em DB
  - Otimização para mobile
+ - Config. Actions
