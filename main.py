@@ -54,7 +54,6 @@ def votosPresi():
                 votosest[estado]['13'] = json_dataest['cand'][1]['pvap']
             else:
                 continue
-    print(votosest)
     return render_template("index.html",
                           len_cand = len(candidato),
                           candidato = candidato,
