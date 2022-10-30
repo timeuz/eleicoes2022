@@ -29,6 +29,7 @@ def votosPresi():
     pcomp = json_databr['pc']+"%"
     abst = format(int(json_databr['a']), "1,d").replace(',','.')
     pabst = json_databr['pa']+"%"
+    psi = json_databr['psi']+"%"
 
     for info in json_databr['cand']:
         if info['seq'] == '1' or info['seq'] == '2':
@@ -71,7 +72,8 @@ def votosPresi():
                           pabst = pabst,
                           estados = estados,
                           votosest = votosest,
-                          aux = aux
+                          aux = aux,
+                          psi = psi
                           )
 
 if __name__ == '__main__':
