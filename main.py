@@ -46,6 +46,7 @@ def votosPresi():
             "https://resultados.tse.jus.br/oficial/ele2022/" + urna + "/dados-simplificados/" + estado + "/" + estado + "-c0001-e000" + urna + "-r.json"
             )
         json_dataest = json.loads(dataest.content)
+        psiest = json_dataest['psi']
         for i in json_dataest:
             if json_dataest['cand'][0]['n'] == '13':
                 votosest[estado]['13'] = json_dataest['cand'][0]['pvap']
@@ -73,7 +74,8 @@ def votosPresi():
                           estados = estados,
                           votosest = votosest,
                           aux = aux,
-                          psi = psi
+                          psi = psi,
+                          psiest = psiest
                           )
 
 if __name__ == '__main__':
