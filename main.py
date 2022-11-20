@@ -11,12 +11,13 @@ def votosPresi():
     estados = ("AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PR", "PB", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO")
     votosest = {'ac':{},'al':{},'ap':{},'am':{},'ba':{},'ce':{},'df':{},'es':{},'go':{},'ma':{},'mt':{},'ms':{},'mg':{},'pa':{},'pr':{},'pb':{},'pe':{},'pi':{},'rj':{},'rn':{},'rs':{},'ro':{},'rr':{},'sc':{},'sp':{},'se':{},'to':{}}
     aux = 0
-    databr = requests.get(
-        'https://resultados.tse.jus.br/oficial/ele2022/'+urna+'/dados-simplificados/br/br-c0001-e000'+urna+'-r.json'
-        )
-
-    json_databr = json.loads(databr.content)
-
+    presi = open("static/pres_final.json", "r")
+    json_databr = json.load(presi)
+    # print(json_databr)
+    # databr = requests.get(
+    #     'https://resultados.tse.jus.br/oficial/ele2022/'+urna+'/dados-simplificados/br/br-c0001-e000'+urna+'-r.json'
+    #     )
+    # json_databr = json.loads(databr.content)
     candidato = []
     partido = []
     votos = []
@@ -42,10 +43,12 @@ def votosPresi():
     
     for estado in estados:
         estado = estado.lower()
-        dataest = requests.get(
-            "https://resultados.tse.jus.br/oficial/ele2022/" + urna + "/dados-simplificados/" + estado + "/" + estado + "-c0001-e000" + urna + "-r.json"
-            )
-        json_dataest = json.loads(dataest.content)
+        # dataest = requests.get(
+        #     "https://resultados.tse.jus.br/oficial/ele2022/" + urna + "/dados-simplificados/" + estado + "/" + estado + "-c0001-e000" + urna + "-r.json"
+        #     )
+        dataest = open("static/"+estado+".json")
+        dataest = dataest.read()
+        json_dataest = json.loads(dataest)
         psiest = json_dataest['psi']
         for i in json_dataest:
             if json_dataest['cand'][0]['n'] == '13':
