@@ -15,4 +15,4 @@ Aplicação em Python e Flask que confere em tempo real a apuração dos votos d
 - Armazenar dados em DB
 - Otimização para mobile
 
-[def]: https://tiny.one/eleicoes2022
+[def]: https://timeu.com.br/eleicoes2022
